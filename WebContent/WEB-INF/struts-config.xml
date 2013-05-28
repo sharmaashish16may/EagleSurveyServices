@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts-config>
+    <form-beans>
+        <form-bean name="logingin" type="eaglesurvey.pricyprizer.struts.form.LogingForm"></form-bean>
+        <form-bean name="retrieveData" type="eaglesurvey.pricyprizer.struts.form.RetrieveDataForm"></form-bean>
+        <form-bean name="productLoader" type="eaglesurvey.pricyprizer.struts.form.ProductLoaderForm"></form-bean>
+        <form-bean name="serviceData" type="eaglesurvey.pricyprizer.struts.form.ServiceDataForm"></form-bean>
+        <form-bean name="contactsData" type="eaglesurvey.pricyprizer.struts.form.ContactsDataForm"></form-bean>
+        <form-bean name="registration" type="eaglesurvey.pricyprizer.struts.form.RegistrationForm"></form-bean>
+    </form-beans>
+    <action-mappings>
+        <action path="/service" forward="/web/service.jsp"/>
+        <action path="/about" forward="/web/about.jsp"/>
+        <action path="/contact" forward="/web/contact.jsp"/>
+        <action path="/pricing" forward="/web/pricing.jsp"/>
+        <action path="/disclaimer" forward="/web/disclaimer.jsp"/>
+        <action path="/privacypolicy" forward="/web/privacypolicy.jsp"/>
+        <action path="/terms" forward="/web/terms.jsp"/>
+        <action path="/index" forward="/index.jsp"/>
+        <action path="/addUser" forward="/web/addUser.jsp"/>
+        <action path="/login" forward="/web/login.jsp"/>
+        <action path="/message" forward="/web/msg.jsp"/>
+        <action path="/serviceData" name = "serviceData" input="/sysadmin.jsp" type="eaglesurvey.pricyprizer.struts.action.ServiceDataAction">
+                  <forward name="success" path="/web/serviceData.jsp"/>
+         </action>
+         <action path="/logingin" name = "logingin" input="/login.jsp" type="eaglesurvey.pricyprizer.struts.action.LogingAction">
+                  <forward name="success" path="/web/retrieveData.jsp"/>
+                  <forward name= "failure" path ="/web/authDecline.jsp"/>  
+         </action>
+         <action path="/contactsData" name = "contactsData" input="/contact.jsp" type="eaglesurvey.pricyprizer.struts.action.ContactsDataAction">
+                  <forward name="done" path="/web/contact.jsp"/>
+         </action>
+         <action path="/registration" name = "registration" input="/addUser.jsp" type="eaglesurvey.pricyprizer.struts.action.RegistrationAction">
+                  <forward name="done" path="/web/addUser.jsp"/>
+         </action>
+         <action path="/retrieveData" name = "retrieveData" input="/retrieveData.jsp" type="eaglesurvey.pricyprizer.struts.action.RetrieveDataAction">
+                  <forward name="admin" path="/web/sysadmin.jsp"/>
+                  <forward name= "executive_pricyprizer" path ="/web/executive_pricyprizer.jsp"/>
+                  <forward name= "failure" path ="/web/authDecline.jsp"/>
+         </action>
+         <action path="/productLoader" name = "productLoader" input="/executive_pricyprize.jsp" type="eaglesurvey.pricyprizer.struts.action.ProductLoaderAction">
+                  <forward name="success" path="/web/retrieveData.jsp"/>
+                  <forward name="failure" path="/web/msg.jsp"/>
+         </action>
+    </action-mappings>
+</struts-config>

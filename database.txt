@@ -1,0 +1,74 @@
+create table login
+(emailid varchar(50) primary key,
+password varchar(50) not null,
+serviceid varchar(10),
+privilege char(1),
+CONSTRAINT fk_service FOREIGN KEY (serviceid) REFERENCES services(serviceid))
+
+insert into login
+values('sharma_ashish_1989@yahoo.com','pass',,'1')
+
+insert into login
+values('kamal.sharma@gmail.com','pass','service2','2')
+
+insert into login
+values('vivek.kumar@gmail.com','pass','service2','2')
+
+create table services
+(serviceid varchar(10) primary key,
+name varchar(20) not null,
+clientid varchar(10),
+status varchar(10) not null,
+start_date date not null,
+end_date date,
+type varchar(30) not null,
+notes varchar(255),
+CONSTRAINT fk_client FOREIGN KEY (clientid) REFERENCES clients(clientid))
+
+insert into services
+values('service1','Galaxy Note2','client1','completed','20/dec/2012','10/jan/2013','On-Field Survey','Survey for the usage of Samsungs product Galaxy Note2 accross the major countries')
+
+insert into services
+values('service2','PricyPrizer','client2','Ongoing','05/jan/2013','05/aug/2013','On-Field Survey','Survey conducted for computing the ideal price of some daily needed products')
+
+insert into services
+values('service3','PricyPrizer','client2','Ongoing','05/jan/2013','05/aug/2013','Development','Formulating the method for calculating the ideal price')
+
+create table clients
+(clientid varchar(10) primary key,
+name varchar(30) not null,
+address varchar(255),
+contact varchar(15),
+total_amount number(8,2),
+amount_paid number(8,2))
+
+insert into clients
+values('client1', 'samsung', 'xyz...Korea','+89-9876543210',5000.00,3000.00);
+
+insert into clients
+values('client2', 'Freelancer', 'Chicago,USA','+63-3216548970',8000.00,1000.00);
+
+create table query_sug_comp
+(emailid varchar(50) not null,
+content varchar(255) not null,
+post_date date not null)
+
+create table service1_tbl
+(c_name varchar(50) not null,
+c_dob date,
+c_contact varchar(15),
+c_review varchar(255),
+c_is_user char(1) not null,
+date_of_survey date not null,
+place_of_survey varchar(30) not null,
+executive_id varchar(50) not null,
+CONSTRAINT fk_executive FOREIGN KEY (executive_id) REFERENCES login(emailid))
+
+insert into service1_tbl
+values ('Rohan','10/dec/1986','9876543210','Nice phone by samsung','y','20/dec/2012','Saket, Delhi, India','kamal.sharma@gmail.com')
+
+insert into service1_tbl
+values ('Sohan','15/aug/1986','9875843210','I am buying it','n','20/dec/2012','Saket, Delhi, India','kamal.sharma@gmail.com')
+
+insert into service1_tbl
+values ('Mohan','9/oct/1993','9876543210','too expensive','n','20/dec/2012','Saket, Delhi, India','kamal.sharma@gmail.com')

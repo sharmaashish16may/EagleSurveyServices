@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<struts-config>
+    <form-beans>
+        <form-bean name="logingin" type="eaglesurvey.pricyprizer.struts.form.LogingForm"></form-bean>
+    </form-beans>
+    <action-mappings>
+        <action path="/service" forward="/web/service.jsp"/>
+        <action path="/about" forward="/web/about.jsp"/>
+        <action path="/contact" forward="/web/contact.jsp"/>
+        <action path="/pricing" forward="/web/pricing.jsp"/>
+        <action path="/index" forward="/index.jsp"/>
+        <action path="/login" forward="/web/login.jsp"/>
+         <action path="/logingin" name = "logingin" input="/login.jsp" type="eaglesurvey.pricyprizer.struts.action.LogingAction">
+                  <forward name="Sysadmin" path="/web/sysadmin.jsp"/>
+        		  <forward name="Executive" path="/web/executive.jsp"/>
+                  <forward name= "failure" path ="/web/loginfails.jsp"/>  
+         </action>
+    </action-mappings>
+    
+</struts-config>
